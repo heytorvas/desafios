@@ -7,9 +7,37 @@ class Formatter():
         pass
 
     def _add_line_break(self, lines):
+        """
+        Add line break to string list and convert to unique string
+        Parameters
+        ----------
+        lines : List
+            list of lines
+        
+        Returns
+        -------
+        text : string
+            text containing all lines
+        """
+
         return ''.join([s + "\n" for s in lines])
 
     def split(self, text, size):
+        """
+        Split text by size of characters with manual way
+        Parameters
+        ----------
+        text : string
+            text
+        size : int
+            size
+        
+        Returns
+        -------
+        result : string
+            text formatted
+        """
+
         words = iter(text.split())
         lines, current = [], next(words)
         for word in words:
@@ -22,16 +50,56 @@ class Formatter():
         return self._add_line_break(lines)
     
     def fast_split(self, text, size):
+        """
+        Split text by size of characters with fast way
+        Parameters
+        ----------
+        text : string
+            text
+        size : int
+            size
+        
+        Returns
+        -------
+        result : string
+            text formatted
+        """
         lines = textwrap.wrap(text, size, break_long_words=False)
         return self._add_line_break(lines)
 
     def save_file(self, text):
+        """
+        Save formatted text to file
+        Parameters
+        ----------
+        text : string
+            text
+        
+        Returns
+        -------
+        boolean
+            True if saved file.
+        """
         file = open(f"output/{datetime.now()}.txt", "w")
         file.write(text)
         file.close()
         return True
 
     def justify(self, text, size):
+        """
+        Justify text content by size of characters
+        Parameters
+        ----------
+        text : string
+            text
+        size : int
+            size
+        
+        Returns
+        -------
+        result : string
+            text formatted
+        """
         lines = textwrap.wrap(text, size, break_long_words=False)
         final_text = ""
         for line_index, line in enumerate(lines):

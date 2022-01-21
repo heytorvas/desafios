@@ -33,3 +33,29 @@ O exemplo de output está [neste arquivo](https://github.com/idwall/desafios/blo
 ### Extras
 
 - Parametrização da quantidade de caracteres por linha.
+
+# Solução
+
+## Configuração de Ambiente
+1. Instalar Docker e Docker-Compose
+2. Clonar este repositório
+
+## Execução
+1. Informar os parâmetros de texto, quantidade de caracteres por linha e o formato no arquivo main.py 
+
+2. Construa o ambiente
+```bash
+docker-compose build
+```
+
+3. Executa o script
+```bash
+docker-compose up strings
+```
+
+## Testes
+1. Acessar a pasta /strings
+2. Executar o script de testes
+```bash
+python -m unittest test
+```
