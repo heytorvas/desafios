@@ -1,5 +1,5 @@
 import textwrap
-from datetime import date, datetime
+from datetime import datetime
 
 class Formatter():
 
@@ -107,8 +107,6 @@ class Formatter():
             new_line.append(line)
 
             if len(line) < size:
-                count_of_chars = len(line)
-                count = 0
                 blank_spaces = [c for c in line if c == " "]
                 number_of_blank_spaces = len(blank_spaces)
 
