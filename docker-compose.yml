@@ -1,0 +1,8 @@
+version: '3.0'
+services:
+  strings:
+    container_name: strings
+    build: ./strings/
+    command: python main.py
+    volumes: 
+      - ./strings/:/home/strings

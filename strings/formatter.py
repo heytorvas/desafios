@@ -26,7 +26,7 @@ class Formatter():
         return self._add_line_break(lines)
 
     def save_file(self, text):
-        file = open(f"strings/{datetime.now()}.txt", "w")
+        file = open(f"output/{datetime.now()}.txt", "w")
         file.write(text)
         file.close()
 
