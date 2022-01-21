@@ -29,6 +29,7 @@ class Formatter():
         file = open(f"output/{datetime.now()}.txt", "w")
         file.write(text)
         file.close()
+        return True
 
     def justify(self, text, size):
         lines = textwrap.wrap(text, size, break_long_words=False)
