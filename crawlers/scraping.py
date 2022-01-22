@@ -46,8 +46,8 @@ def request_content(word):
         html content
     """
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"}
-    response = requests.get(f'{REDDIT_URL}{word}', headers=headers).text
-    return BeautifulSoup(response, 'html.parser')
+    response = requests.get(f'{REDDIT_URL}{word}', headers=headers)
+    return BeautifulSoup(response.text, 'html.parser'), response.status_code
 
 def get_threads(args):
     """
@@ -65,7 +65,7 @@ def get_threads(args):
     words = [string for string in args.split(';') if string] #check if is an empty string
     results = []
     for word in words:
-        soup = request_content(word)
+        soup, _ = request_content(word)
 
         if check_exists(soup):
             subreddit = soup.find('span', {'class': 'redditname'}).text
