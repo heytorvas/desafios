@@ -29,3 +29,24 @@ Construir um robô que nos envie essa lista via Telegram sempre que receber o co
 ### Dicas
  - Use https://old.reddit.com/
  - Qualquer método para coletar os dados é válido. Caso não saiba por onde começar, procure por JSoup (Java), SeleniumHQ (Java), PhantomJS (Javascript) e Beautiful Soup (Python).
+
+# Solução
+
+## Configuração de Ambiente
+1. Instalar Docker e Docker-Compose
+2. Clonar este repositório
+
+## Execução
+
+1. Construa o ambiente
+```bash
+docker-compose build
+```
+
+2. Executa o comando de início do bot
+```bash
+docker-compose up bot
+```
+
+## Observações
+### BOT Telegram: ```@idwall_bot```

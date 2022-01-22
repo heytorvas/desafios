@@ -14,6 +14,18 @@ class Reddit:
         self.datetime = datetime   
 
 def check_exists(soup):
+    """
+    Check if exists this subreddit
+    Parameters
+    ----------
+    soup : BeautifulSoup
+        html content
+    
+    Returns
+    -------
+    result : boolean
+        True if exists subreddit
+    """
     error = soup.find('p', {'id': 'noresults', 'class': 'error'})
     if error == None:
         return True
@@ -21,11 +33,35 @@ def check_exists(soup):
         return False
 
 def request_content(word):
+    """
+    Make request on reddit website and get body content
+    Parameters
+    ----------
+    word : string
+        html content
+    
+    Returns
+    -------
+    soup : BeautifulSoup
+        html content
+    """
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"}
     response = requests.get(f'{REDDIT_URL}{word}', headers=headers).text
     return BeautifulSoup(response, 'html.parser')
 
 def get_threads(args):
+    """
+    Get all threads about the terms and above score filter 
+    Parameters
+    ----------
+    args : list
+        list of subreddits
+    
+    Returns
+    -------
+    results : list
+        list of all threads
+    """
     words = [x for x in args.split(';') if x] #check if is an empty string
     results = []
     for word in words:

@@ -6,7 +6,9 @@ ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')
 logging.basicConfig(filename="bot.log", level=logging.INFO)
 
 def threads(update, context):
-    """Send a message when the command /NadaPraFazer is issued."""
+    """
+    Send a message when the command /NadaPraFazer is issued.
+    """
     try:
         logging.info(f'command /NadaPraFazer {context.args[0]}')
         lists = get_threads(context.args[0])
@@ -40,7 +42,9 @@ def threads(update, context):
         update.message.reply_text('WRONG! Example: /NadaPraFazer askreddit;worldnews;cats')
 
 def main():
-    """Start the bot."""
+    """
+    Start the bot.
+    """
     logging.info('bot on')
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
