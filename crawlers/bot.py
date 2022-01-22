@@ -13,14 +13,14 @@ def threads(update, context):
         logging.info(f'command /NadaPraFazer {context.args[0]}')
         lists = get_threads(context.args[0])
         for threads in lists:
-            for t in threads:
+            for reddit in threads:
                 try:
-                    subreddit = t.__dict__['subreddit']
-                    title = t.__dict__['title']
-                    score = t.__dict__['score']
-                    link = t.__dict__['link']
-                    comments = t.__dict__['comments']
-                    datetime = t.__dict__['datetime']
+                    subreddit = reddit.__dict__['subreddit']
+                    title = reddit.__dict__['title']
+                    score = reddit.__dict__['score']
+                    link = reddit.__dict__['link']
+                    comments = reddit.__dict__['comments']
+                    datetime = reddit.__dict__['datetime']
                     update.effective_message.reply_html(
                         f'<b>Subreddit: </b>{subreddit}\n'
                         f'<b>Title: </b>{title}\n'
@@ -46,23 +46,13 @@ def main():
     Start the bot.
     """
     logging.info('bot on')
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
+
     updater = Updater(ACCESS_TOKEN, use_context=True)
 
-    # Get the dispatcher to register handlers
     dp = updater.dispatcher
-
-    # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("NadaPraFazer", threads, pass_args=True))
 
-    # Start the Bot
     updater.start_polling()
-
-    # Run the bot until you press Ctrl-C or the process receives SIGINT,
-    # SIGTERM or SIGABRT. This should be used most of the time, since
-    # start_polling() is non-blocking and will stop the bot gracefully.
     updater.idle()
 
 main()

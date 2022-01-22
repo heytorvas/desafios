@@ -62,7 +62,7 @@ def get_threads(args):
     results : list
         list of all threads
     """
-    words = [x for x in args.split(';') if x] #check if is an empty string
+    words = [string for string in args.split(';') if string] #check if is an empty string
     results = []
     for word in words:
         soup = request_content(word)
@@ -80,8 +80,8 @@ def get_threads(args):
                         comments = thread.find('a', {'class': 'comments'})['href']
                         link = thread.find('a', {'class': 'title'})['href']
                         datetime = thread.find('time', {'class': 'live-timestamp'})['datetime']
-                        r = Reddit(subreddit, title, score, link, comments, datetime)
-                        threads.append(r)
+                        reddit = Reddit(subreddit, title, score, link, comments, datetime)
+                        threads.append(reddit)
                 except:
                     pass
             results.append(threads)
