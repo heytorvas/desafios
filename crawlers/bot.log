@@ -1,0 +1,5 @@
+INFO:root:bot on
+INFO:apscheduler.scheduler:Scheduler started
+INFO:root:command /NadaPraFazer pics;funny
+INFO:root:command /NadaPraFazer askreddit
+INFO:root:command /NadaPraFazer gaming;todayilearned;movies;explainlikeimfive

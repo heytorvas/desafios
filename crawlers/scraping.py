@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 REDDIT_URL = 'https://old.reddit.com/r/'
+SCORE_FILTER = 5000
 
 class Reddit:
     def __init__(self, subreddit, title, score, link, comments, datetime):
@@ -24,7 +25,8 @@ def request_content(word):
     response = requests.get(f'{REDDIT_URL}{word}', headers=headers).text
     return BeautifulSoup(response, 'html.parser')
 
-def get_threads(words):
+def get_threads(args):
+    words = [x for x in args.split(';') if x] #check if is an empty string
     results = []
     for word in words:
         soup = request_content(word)
@@ -51,10 +53,3 @@ def get_threads(words):
             results.append({'subreddit': word, 'msg': "doesn't exists"})
 
     return results
-
-
-SCORE_FILTER = 5
-args = 'askreddit;worldnews;cats;uhfgiyu67'
-words = [x for x in args.split(';') if x] #check if is an empty string
-
-print(get_threads(words))

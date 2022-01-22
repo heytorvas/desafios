@@ -6,3 +6,12 @@ services:
     command: python main.py
     volumes: 
       - ./strings/:/home/strings
+  
+  bot:
+    container_name: bot
+    build: ./crawlers/
+    command: python bot.py
+    volumes:
+      - ./crawlers/:/home/crawlers
+    env_file:
+      - ./crawlers/.env
