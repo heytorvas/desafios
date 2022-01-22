@@ -48,5 +48,12 @@ docker-compose build
 docker-compose up bot
 ```
 
+## Testes
+1. Acessar a pasta /crawlers
+2. Executar o script de testes
+```bash
+python -m unittest test
+```
+
 ## Observações
 ### BOT Telegram: ```@idwall_bot```
